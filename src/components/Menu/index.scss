@@ -1,0 +1,124 @@
+@import 'src/global.scss';
+
+.logoImg{
+  width: 50px;
+  margin-right: 5px;
+}
+
+.menuContainer {
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: #{$primary-dark} !important;
+  display: flex;
+  flex-direction: row !important;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  z-index: 10;
+  border-radius: 0;
+  height: 50px;
+  border: none;
+
+  @media screen and (max-width:460px) {
+    padding: 0 10px;
+  }
+
+  .p-button {
+    background-color: transparent !important;
+    padding: 10px;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .projectP{
+    color: white;
+    text-align: center;
+    height: 20px;
+    margin: 0;
+
+    @media screen and (max-width:460px) {
+      font-size: 12px;
+    }
+  }
+}
+
+.userMenu {
+  position: relative !important;
+}
+
+.p-slidemenu{
+  position: fixed !important;
+  display: block !important;
+  top: 50px !important;
+  right: 0 !important;
+  height: 106px !important;
+  background-color: #{$primary-color} !important;
+  width: 160px;
+  left: unset !important;
+
+
+  @media screen and (max-width:460px) {
+    width: 50%;
+  }
+
+  .p-slidemenu-wrapper{
+    height: 100% !important;
+
+    .p-menuitem-link .p-menuitem-text {
+      color: white;
+    }
+
+    .p-menuitem-link  {
+      .p-submenu-icon, .p-menuitem-icon{
+        color: white;
+      }
+    }
+  }
+}
+
+.p-slidemenu-backward{
+  color: white !important;
+}
+
+.lateral {
+  max-width: 256px;
+  min-height: calc(100vh - 50px);
+  background-color: #{$primary-color} !important;
+
+  .ant-btn.ant-btn-icon-only {
+    color: white !important;
+  }
+
+  ul {
+    background-color: #{$primary-color} !important;
+    li {
+      background-color: #{$primary-color} !important;
+      color: white !important;
+    }
+  }
+}
+
+.lateralSubMenu{
+  background-color: #{$primary-color} !important;
+  ul {
+    background-color: #{$primary-color} !important;
+    li {
+      background-color: #{$primary-color} !important;
+      color: white !important;
+
+      span {
+        display: inline-flex;
+        align-items: center;
+        color: inherit;
+        font-style: normal;
+        line-height: 0;
+        text-align: center;
+        text-transform: none;
+        vertical-align: -0.125em;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+      }
+    }
+  }
+}

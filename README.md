@@ -1,12 +1,5 @@
 # SoundLabConnect 
-## Description: A social network to connect electronic music producers. It’s focused on collaboration tools, such as audio analysis and commentaries by peers or pros, marketplace for mixing/mastering services with messaging and payment handling.
-
-## Features:
-##	- create project
-###		- upload files
-###		- invite peers or pros
-###		- private/public
-###		- space for comments of feedbacks
+## Description: A marketplace for mixing/mastering/audio related services with messaging, feed and payment handling.
 
 ##	- marketplace
 ###		- offer service

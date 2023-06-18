@@ -1,0 +1,91 @@
+@import "src/global.scss";
+
+.login{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+  color: white;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  background: #{$primary-dark};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .p-password {
+    background: transparent !important;
+    border: none !important;
+  }
+  .input-group{
+    ::placeholder{
+      color: gray !important;
+    }
+  }
+  .p-inputtext {
+    background: #272019;
+    opacity: 0.9;
+    color: white !important;
+    border-radius: 0 !important;
+  }
+}
+
+
+.loading{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.container{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:100vh;
+  width:100%;
+}
+
+.form-box{
+  width:380px;
+  height:450px;
+  background-color: #333333;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items: center;
+  opacity:0.9;
+  border-radius:2%;
+
+  .button{
+    margin-top:30px;
+    margin-bottom:25px;
+    width: 120px
+  }
+}
+
+.header-form{
+  margin-bottom:40px;
+}
+
+.loginForm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.message{
+  display:flex;
+  justify-content:space-between;
+  width:100%;
+}
+
+.input-group-text.loginIcon {
+  border-radius: 0.25rem 0 0 0.25rem;
+  height: 100%;
+}
+
+.zeroPadding{
+  padding:0;
+}
