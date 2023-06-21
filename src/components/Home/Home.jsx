@@ -10,7 +10,8 @@ import {Message} from "primereact/message";
 export const Home = () => {
   const { setMarketplaces, marketplaces, userData } = useContext(UserContext);
   const [loading, setLoading] = useState(true)
-  const [socketRabbit, setSocketRabbit] = useState()
+  const [socketRabbit1, setSocketRabbit1] = useState('first')
+  const [socketRabbit2, setSocketRabbit2] = useState()
 
   useEffect(() => {
     const getMarketplaces = async () => {
@@ -37,8 +38,13 @@ export const Home = () => {
 
    
     subscribe((result) => {
-        setSocketRabbit(JSON.stringify(result))
-      })
+      console.log('1', result)
+        setSocketRabbit1(JSON.stringify([...socketRabbit1, result]))
+      }, 'mixing')
+
+    subscribe((result) => {
+      setSocketRabbit2(JSON.stringify(result))
+    }, 'mastering')
     }, [])
 
   const responsiveOptions = [
@@ -55,7 +61,7 @@ export const Home = () => {
   ];
 
   const handleCreateService = async (mkName, service) => {
-    await createService('mixing', {title: 'teste', description: 'testando', price: 10}, userData.token)
+    await createService(mkName, service, userData.token)
   }
 
   return (
@@ -72,8 +78,12 @@ export const Home = () => {
           </div>}
         </div>
         <div className="temporaryRabbit">
-            <p>{socketRabbit && socketRabbit}</p>
-            <button onClick={handleCreateService}>Create Service</button>
+            <p>{socketRabbit1 && socketRabbit1}</p>
+            <button onClick={() => handleCreateService('mixing', {title: 'teste1', description: 'testando1', price: 10})}>Create Service1</button>
+        </div>
+        <div className="temporaryRabbit">
+          <p>{socketRabbit2 && socketRabbit2}</p>
+          <button onClick={() => handleCreateService('mastering', {title: 'teste2', description: 'testando2', price: 20})}>Create Service2</button>
         </div>
     </div>
   )

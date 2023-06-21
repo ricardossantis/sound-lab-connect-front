@@ -34,9 +34,9 @@ export const getAllMarketplaces = (token) => axios.get(`${url}${paths.getMarketp
   .then(response => response.data)
   .catch(err => { throw err })
 
-export const subscribe = (callback) => {
-  socket.on("feed", (result) => {
-    console.log('1', result)
+export const subscribe = (callback, queue) => {
+  console.log('1', queue)
+  socket.on(`${queue}-feed`, (result) => {
     result = JSON.parse(result);
     callback(result);
   });
