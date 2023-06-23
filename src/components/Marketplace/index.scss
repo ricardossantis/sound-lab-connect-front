@@ -17,7 +17,7 @@
     padding: 10px 15px;
     margin: 30px 0 30px;
 
-    @media screen and (min-width:1400px) {
+    @media screen and (min-width:1800px) {
       height: 150px;
       padding: 30px 45px;
       margin: 50px 0 50px;
@@ -27,7 +27,7 @@
       color: #{$primary-color};
       font-size: 22px;
 
-      @media screen and (min-width:1400px) {
+      @media screen and (min-width:1800px) {
         font-size: 28px;
       }
 
@@ -41,7 +41,7 @@
       margin: 5px 0 0;
       width: 100%;
 
-      @media screen and (min-width:1400px) {
+      @media screen and (min-width:1800px) {
         font-size: 22px;
       }
 
@@ -58,8 +58,8 @@
     margin: 0 0 30px;
     padding: 50px;
 
-    @media screen and (min-width:1400px) {
-      height: 580px;
+    @media screen and (min-width:1800px) {
+      height: 500px;
       margin: 0 0 50px;
       padding: 40px;
     }
@@ -94,12 +94,12 @@
   padding: 0.6rem 1.25rem !important;
   margin-bottom: 15px;
 
-  @media screen and (min-width:1400px) {
-    height: 300px !important;
+  @media screen and (min-width:1800px) {
+    height: 150px !important;
   }
 
   @media screen and (max-width: 460px) {
-    height: 150px !important;
+    height: 90px !important;
     padding: 0.5rem 0.8rem !important;
   }
 
@@ -118,7 +118,7 @@
       margin-bottom: 14px !important;
       line-height: initial;
 
-      @media screen and (min-width:1400px) {
+      @media screen and (min-width:1800px) {
         font-size: 20px;
         margin-bottom: 18px !important;
       }
@@ -134,7 +134,7 @@
       margin-bottom: 6px !important;
       line-height: initial;
 
-      @media screen and (min-width:1400px) {
+      @media screen and (min-width:1800px) {
         font-size: 16px;
         margin-bottom: 10px !important;
       }
@@ -151,7 +151,7 @@
       font-weight: 400;
       line-height: initial;
 
-      @media screen and (min-width:1400px) {
+      @media screen and (min-width:1800px) {
         font-size: 18px;
       }
 
@@ -171,7 +171,7 @@
     cursor: pointer;
   }
 
-  @media screen and (min-width:1400px) {
+  @media screen and (min-width:1800px) {
     width: 280px;
   }
 
@@ -182,7 +182,7 @@
   .headerImg{
     height: 150px;
 
-    @media screen and (min-width:1400px) {
+    @media screen and (min-width:1800px) {
       height: 200px;
     }
 
