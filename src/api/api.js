@@ -6,7 +6,8 @@ const paths = {
   login: 'user/login',
   changePassword: 'user/changePassword',
   getMarketplaces: 'marketplace/all',
-  createService: 'service/create'
+  createService: 'service/create',
+  createCheckoutSession: 'service/create-checkout-session'
 }
 
 export const login = (user) => axios.post(`${url}${paths.login}`, user).then(response => response.data)
@@ -31,6 +32,13 @@ export const getAllMarketplaces = (token) => axios.get(`${url}${paths.getMarketp
 export const createService = (mkName, service, token) => axios.post(`${url}${paths.createService}/${mkName}`,
   { ...service },
   {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    }})
+  .then(response => response.data)
+
+export const createCheckoutSession = (token) => axios.post(`${url}${paths.createCheckoutSession}`, {}, {
     headers: {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + token

@@ -1,10 +1,14 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Card } from 'primereact/card';
 import { Skeleton } from 'primereact/skeleton';
 import Mastering from '../../assets/mastering.jpg'
 import Mixing from '../../assets/mixing.jpg'
+import { createCheckoutSession } from '../../api/api.js'
+import {UserContext} from "../../App.jsx";
+import { Button } from 'primereact/button'
 
 export default function ServiceCard({service}) {
+  const { userData } = useContext(UserContext);
   const imageMapping = {
     'mastering': Mastering,
     'mixing': Mixing
@@ -19,6 +23,12 @@ export default function ServiceCard({service}) {
       <p className={'cardTitle'}>{service.marketplace}</p>
       <p className={'cardInfo'}>{service.description}</p>
       <p className={'cardInfo'}>Price: {service.price}</p>
+        <Button onClick={async () => {
+          const { url } = await createCheckoutSession(userData.token)
+          window.location = url
+        }}>
+          Checkout
+        </Button>
     </div>
   );
 

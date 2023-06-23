@@ -11,7 +11,7 @@ export const TopMenu = () => {
   const userMenu = useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
-  const { setLogin, userData, setUserData } = useContext(UserContext);
+  const { setLogin, userData, setUserData, setMarketplaces } = useContext(UserContext);
 
   const locationTextMap = {
     '/': 'HOME',

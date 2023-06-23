@@ -45,7 +45,8 @@ export const Marketplace = () => {
   ];
 
   const handleCreateService = async (mkName, service) => {
-    await createService(mkName, service, userData.token)
+    const newService = await createService(mkName, service, userData.token)
+    setSocketRabbit([...socketRabbit, newService])
   }
 
   return (
@@ -57,7 +58,7 @@ export const Marketplace = () => {
           {socketRabbit && <Carousel value={socketRabbit.map((service) => ({ service }))} numVisible={3} numScroll={1} responsiveOptions={responsiveOptions} itemTemplate={ServiceCard} />}
         </div>
       <div className="temporaryRabbit">
-          <Button onClick={() => handleCreateService(marketplace, {title: 'teste1', description: 'testando1', price: 10})}>Create Service</Button>
+          <Button onClick={() => handleCreateService(marketplace, {title: 'teste1', description: 'testando1', price: 1000})}>Create Service</Button>
       </div>
     </div>
   )
