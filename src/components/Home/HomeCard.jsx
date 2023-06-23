@@ -1,10 +1,21 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Card } from 'primereact/card';
 import { Skeleton } from 'primereact/skeleton';
+import Mastering from '../../assets/mastering.jpg'
+import Mixing from '../../assets/mixing.jpg'
+import {useNavigate} from "react-router-dom";
+import {UserContext} from "../../App.jsx";
 
 export default function HomeCard(data) {
+  const { setMarketplace } = useContext(UserContext);
+  const navigate = useNavigate()
+  const imageMapping = {
+    'mastering': Mastering,
+    'mixing': Mixing
+  }
+
   const header = (
-    <p className={'cardTitle'}>Placeholder</p>
+    <img className={'headerImg'} src={data?.imageUrl ? data.imageUrl : imageMapping[data.name]}/>
   );
 
   const footer = (
@@ -15,7 +26,10 @@ export default function HomeCard(data) {
   );
 
   return (
-      <div className="card flex justify-content-center cardContainer">
+      <div className="card flex justify-content-center cardContainer" onClick={() => {
+        setMarketplace(data.name)
+        navigate('/services')
+      }}>
         {data.loading && <div className="border-round border-1 surface-border p-4 surface-card">
           <div className="flex flex-col mb-3">
             <Skeleton width="100%" height="120px"></Skeleton>

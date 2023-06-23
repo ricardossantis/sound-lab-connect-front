@@ -1,0 +1,64 @@
+import React, {useContext, useEffect, useState} from "react";
+import {UserContext} from "../../App";
+import './index.scss'
+import { Carousel } from 'primereact/carousel';
+import {createService, url} from "../../api/api";
+import ServiceCard from "./ServiceCard.jsx"
+import {io} from "socket.io-client"
+import { Button } from 'primereact/button'
+
+export const Marketplace = () => {
+  const socket = io(`${url}`);
+  const { marketplace, userData } = useContext(UserContext);
+  const [loading, setLoading] = useState(true)
+  const [socketRabbit, setSocketRabbit] = useState([])
+
+  socket.on('connect', () => {
+    console.log('Connected to the socket.io server');
+  });
+
+  const subscribe = (callback, queue) => {
+    socket.on(`${queue}-feed`, (result) => {
+      result = JSON.parse(result);
+      callback(result);
+    });
+  }
+
+  useEffect(() => {
+    subscribe((result) => {
+      const parsedResult = result.map(item => JSON.parse(item.msg))
+      setSocketRabbit(parsedResult)
+      }, marketplace)
+    }, [])
+
+  const responsiveOptions = [
+    {
+      breakpoint: '1199px',
+      numVisible: 2,
+      numScroll: 1
+    },
+    {
+      breakpoint: '460px',
+      numVisible: 1,
+      numScroll: 1
+    }
+  ];
+
+  const handleCreateService = async (mkName, service) => {
+    await createService(mkName, service, userData.token)
+  }
+
+  return (
+    <div className="mainContainer">
+        <div className={'homeIntro'}>
+          <p className={'homeTitle'}>{marketplace.toUpperCase()}</p>
+        </div>
+        <div className={'carouselContainer'}>
+          {socketRabbit && <Carousel value={socketRabbit.map((service) => ({ service }))} numVisible={3} numScroll={1} responsiveOptions={responsiveOptions} itemTemplate={ServiceCard} />}
+        </div>
+      <div className="temporaryRabbit">
+          <Button onClick={() => handleCreateService(marketplace, {title: 'teste1', description: 'testando1', price: 10})}>Create Service</Button>
+      </div>
+    </div>
+  )
+}

@@ -1,4 +1,4 @@
-# SoundLabConnect 
+# SoundLabConnect - Project in progress
 ## Description: A marketplace for mixing/mastering/audio related services with messaging, feed and payment handling.
 
 ##	- marketplace
@@ -8,4 +8,4 @@
 ###		- internal/external payment handling
 
 ##	- feed
-###		- show recommended services and public projects to collaborate
+###		- show recommended services

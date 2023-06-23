@@ -12,6 +12,7 @@ function App() {
   const [isLoggedIn, setLogin] = useState(false)
   const [collapsed, setCollapsed] = useState(true);
   const [marketplaces, setMarketplaces] = useState([])
+  const [marketplace, setMarketplace] = useState('')
   const [userData, setUserData] = useState({
     username: "",
     password: "",
@@ -20,7 +21,7 @@ function App() {
 
   return (
     <UserContext.Provider
-      value={{ isLoggedIn, setLogin, userData, setUserData, collapsed, setCollapsed, marketplaces, setMarketplaces }}
+      value={{ isLoggedIn, setLogin, userData, setUserData, collapsed, setCollapsed, marketplaces, setMarketplaces, marketplace, setMarketplace }}
     >
       <>
         <Routes/>

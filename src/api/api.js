@@ -1,12 +1,6 @@
 import axios from "axios";
-import { io } from 'socket.io-client';
 
-const url = 'http://localhost:3000/'
-const socket = io(`${url}`);
-
-socket.on('connect', () => {
-  console.log('Connected to the socket.io server');
-});
+export const url = 'http://localhost:3000/'
 
 const paths = {
   login: 'user/login',
@@ -33,14 +27,6 @@ export const getAllMarketplaces = (token) => axios.get(`${url}${paths.getMarketp
   }})
   .then(response => response.data)
   .catch(err => { throw err })
-
-export const subscribe = (callback, queue) => {
-  console.log('1', queue)
-  socket.on(`${queue}-feed`, (result) => {
-    result = JSON.parse(result);
-    callback(result);
-  });
-}
 
 export const createService = (mkName, service, token) => axios.post(`${url}${paths.createService}/${mkName}`,
   { ...service },
