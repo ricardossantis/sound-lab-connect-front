@@ -1,7 +1,7 @@
 import './chat.scss';
 import { useState, useEffect } from 'react';
 
-const RoomAndUsers = ({ socket, username, room, setVisible }) => {
+const RoomAndUsers = ({ socket, username, room, setVisible, owner }) => {
   const [roomUsers, setRoomUsers] = useState([]);
 
   useEffect(() => {
@@ -19,17 +19,17 @@ const RoomAndUsers = ({ socket, username, room, setVisible }) => {
 
   return (
     <div className={'roomAndUsersColumn'}>
-      <h2 className={'roomTitle'}>{room}</h2>
+      <h2 className={'roomTitle'}>From {owner}</h2>
 
       <div>
         {roomUsers.length > 0 && <h5 className={'usersTitle'}>Users:</h5>}
         <ul className={'usersList'}>
-          {roomUsers.map((user) => (
+          {roomUsers.map((user, index) => (
             <li
               style={{
                 fontWeight: `${user.username === username ? 'bold' : 'normal'}`,
               }}
-              key={user.id}
+              key={index}
             >
               {user.username}
             </li>

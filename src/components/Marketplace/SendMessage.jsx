@@ -1,13 +1,13 @@
 import './chat.scss';
 import React, { useState } from 'react';
 
-const SendMessage = ({ socket, username, room }) => {
+const SendMessage = ({ socket, username, room, owner }) => {
   const [message, setMessage] = useState('');
 
   const sendMessage = () => {
     const createdTime = Date.now();
     if (message !== '') {
-    socket.emit('send_message', { username, room, message, createdTime });
+    socket.emit('send_message', { username, room, message, owner, createdTime });
       setMessage('');
     }
   };

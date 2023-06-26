@@ -31,7 +31,8 @@ export default function ServiceCard({service, socket}) {
         <Button onClick={async () => {
           const username = userData.username
           const room = `${username}_${service.owner}`
-          socket.emit('joinChat', { username, room });
+          const owner = service.owner
+          socket.emit('joinChat', { username, room, owner });
           setVisible(true)
         }}>
           Chat
@@ -59,7 +60,7 @@ export default function ServiceCard({service, socket}) {
           </div>
         </div>}
         <Dialog header="Chat" visible={visible} style={{ width: '80vw' }} onHide={() => setVisible(false)}>
-          <Chat socket={socket} username={userData.username} room={`${userData.username}_${service.owner}`} setVisible={setVisible}/>
+          <Chat socket={socket} username={userData.username} room={`${userData.username}_${service.owner}`} owner={service.owner} setVisible={setVisible}/>
         </Dialog>
         {!service.loading && <Card footer={footer} header={header} className="md:w-25rem"/>}
       </div>

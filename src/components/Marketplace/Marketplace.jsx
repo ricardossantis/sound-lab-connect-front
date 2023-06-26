@@ -24,11 +24,23 @@ export const Marketplace = () => {
     });
   }
 
+  const subscribeUser = (callback, queue) => {
+    socket.on(`${queue}`, (result) => {
+      console.log('1', result)
+      result = JSON.parse(result);
+      callback(result);
+    });
+  }
+
   useEffect(() => {
     subscribe((result) => {
       const parsedResult = result.map(item => JSON.parse(item.msg))
       setSocketRabbit(parsedResult)
       }, marketplace)
+
+    subscribeUser((result) => {
+      console.log('2', result)
+    }, userData.username)
     }, [])
 
   const responsiveOptions = [
