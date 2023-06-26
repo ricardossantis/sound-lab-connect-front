@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import { Card } from 'primereact/card';
 import { Skeleton } from 'primereact/skeleton';
 import Mastering from '../../assets/mastering.jpg'
@@ -6,9 +6,12 @@ import Mixing from '../../assets/mixing.jpg'
 import { createCheckoutSession } from '../../api/api.js'
 import {UserContext} from "../../App.jsx";
 import { Button } from 'primereact/button'
+import { Dialog } from 'primereact/dialog'
+import Chat from './Chat'
 
-export default function ServiceCard({service}) {
+export default function ServiceCard({service, socket}) {
   const { userData } = useContext(UserContext);
+  const [visible, setVisible] = useState(false)
   const imageMapping = {
     'mastering': Mastering,
     'mixing': Mixing
@@ -23,12 +26,23 @@ export default function ServiceCard({service}) {
       <p className={'cardTitle'}>{service.marketplace}</p>
       <p className={'cardInfo'}>{service.description}</p>
       <p className={'cardInfo'}>Price: {service.price}</p>
+      <p className={'cardInfo'}>Owner: {service.owner}</p>
+      <div className={'cardButtons'}>
+        <Button onClick={async () => {
+          const username = userData.username
+          const room = `${username}_${service.owner}`
+          socket.emit('joinChat', { username, room });
+          setVisible(true)
+        }}>
+          Chat
+        </Button>
         <Button onClick={async () => {
           const { url } = await createCheckoutSession(userData.token)
           window.location = url
         }}>
-          Checkout
+          Pay
         </Button>
+      </div>
     </div>
   );
 
@@ -44,6 +58,9 @@ export default function ServiceCard({service}) {
             </div>
           </div>
         </div>}
+        <Dialog header="Chat" visible={visible} style={{ width: '80vw' }} onHide={() => setVisible(false)}>
+          <Chat socket={socket} username={userData.username} room={`${userData.username}_${service.owner}`} setVisible={setVisible}/>
+        </Dialog>
         {!service.loading && <Card footer={footer} header={header} className="md:w-25rem"/>}
       </div>
   )

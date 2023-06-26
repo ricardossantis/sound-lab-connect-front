@@ -55,7 +55,7 @@ export const Marketplace = () => {
           <p className={'homeTitle'}>{marketplace.toUpperCase()}</p>
         </div>
         <div className={'carouselContainer'}>
-          {socketRabbit && <Carousel value={socketRabbit.map((service) => ({ service }))} numVisible={3} numScroll={1} responsiveOptions={responsiveOptions} itemTemplate={ServiceCard} />}
+          {socketRabbit && <Carousel value={socketRabbit.map((service) => ({ service, socket }))} numVisible={3} numScroll={1} responsiveOptions={responsiveOptions} itemTemplate={ServiceCard} />}
         </div>
       <div className="temporaryRabbit">
           <Button onClick={() => handleCreateService(marketplace, {title: 'teste1', description: 'testando1', price: 1000})}>Create Service</Button>

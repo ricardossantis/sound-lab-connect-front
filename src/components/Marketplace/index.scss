@@ -90,27 +90,38 @@
   background: white !important;
   display: flex;
   justify-content: center;
-  height: 90px;
-  padding: 0.6rem 1.25rem !important;
+  height: 160px;
+  padding: 0.2rem !important;
   margin-bottom: 15px;
+  width: 100%;
 
   @media screen and (min-width:1800px) {
-    height: 150px !important;
+    height: 160px !important;
   }
 
   @media screen and (max-width: 460px) {
-    height: 90px !important;
+    height: 120px !important;
     padding: 0.5rem 0.8rem !important;
   }
 
   .p-card-footer{
     padding: 0 !important;
+    width: 100%;
   }
+
   .cardFooter{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
+
+    .cardButtons{
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      margin: 10px 0px;
+    }
 
     .cardTitle{
       font-weight: 600;

@@ -4,8 +4,8 @@
 ##	- marketplace
 ###		- offer service
 ###		- contract service
-###		- internal/external messaging
-###		- internal/external payment handling
+###		- chat for service
+###		- stripe payment handling
 
 ##	- feed
-###		- show recommended services
+###		- show last services
